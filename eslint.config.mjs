@@ -1,3 +1,4 @@
+import { Linter } from 'eslint';
 
 const config = {
   // Defina o ambiente (node, browser, es2021)
@@ -45,6 +46,24 @@ const config = {
       },
     },
   },
+  // Inclusão de arquivos TypeScript
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: ['./tsconfig.json'],
+      },
+      plugins: ['@typescript-eslint'],
+      extends: [
+        'plugin:@typescript-eslint/recommended', // Regras recomendadas do TypeScript
+      ],
+      rules: {
+        // Regras específicas para arquivos TypeScript
+        '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      },
+    },
+  ],
 };
 
 export default config;

@@ -1,0 +1,29 @@
+services:
+  database:
+    image: postgres
+    container_name: teste_tecnico_example
+    restart: always
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secretkey
+      POSTGRES_DB: mydatabase
+    volumes:
+      - ./pg-data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: teste_tecnico_app_example
+    ports:
+      - '5000:5000'
+    volumes:
+      - .:/usr/app
+    depends_on:
+      - database
+    environment:
+      DATABASE_URL: postgres://postgres:secretkey@database:5433/mydatabase
+
+volumes:
+  pgdata:
+    driver: local

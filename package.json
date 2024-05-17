@@ -15,8 +15,12 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@prisma/client": "5.14.0",
+    "@types/node": "^20.12.12",
     "express": "^4.19.2",
     "lint-staged": "^15.2.2",
+    "prisma": "^5.14.0",
+    "ts-node": "^10.9.2",
     "tsc": "^2.0.4",
     "typescript": "^5.4.5"
   },

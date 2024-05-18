@@ -11,8 +11,9 @@ model tab_user {
   id          String      @id @default(uuid())
   name        String
   lastName    String
-  code    String
+  code        String
   phone       String      @unique
+  empresa     String      @unique
 
   createdAt   String      @map("created_at") @db.VarChar(32)
   updatedAt   String?     @map("updated_at") @db.VarChar(32)

@@ -1,10 +1,10 @@
 services:
   database:
     image: postgres
-    container_name: teste_tecnico_example
+    container_name: localhost
     restart: always
     ports:
-      - '5433:5432'
+      - '5432:5432'
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secretkey
@@ -21,8 +21,6 @@ services:
       - .:/usr/app
     depends_on:
       - database
-    environment:
-      DATABASE_URL: postgres://postgres:secretkey@database:5433/mydatabase
 
 volumes:
   pgdata:

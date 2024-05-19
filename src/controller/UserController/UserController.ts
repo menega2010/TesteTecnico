@@ -1,12 +1,24 @@
 import { Request, Response } from 'express';
+import { UserRepository } from '../../repository/UserRepository';
+import { UserService } from '../../service/UserService';
 import { ValidateUserCase } from '../../useCases/validateUserCase';
 
-export class UserController {
-  constructor(private readonly useCase: ValidateUserCase) {}
+const factory = () => {
+  const userRepository = new UserRepository();
+  const userService = new UserService(userRepository);
+  const useCase = new ValidateUserCase(userService);
+  return useCase;
+};
 
-  async post(req: Request, resp: Response): Promise<Response> {
+export class UserController {
+  constructor() {}
+
+  async post(req: Request, resp: Response) {
     const { code } = req.body;
-    await this.useCase.validateUser(code);
-    return resp.status(200).json({ message: 'Login efetuado com sucesso!' });
+    const statusValidate = await factory().validateUser(code);
+
+    statusValidate === 200
+      ? resp.status(statusValidate).json({ message: 'Login efetuado com sucesso!' })
+      : resp.status(statusValidate).json({ message: 'Código inválido!' });
   }
 }

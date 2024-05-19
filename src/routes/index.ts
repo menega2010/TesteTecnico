@@ -3,6 +3,6 @@ import { validateUsersRoute } from './validateUser.routes';
 
 const routes = Router();
 
-routes.use('/', validateUsersRoute);
+routes.use('/validate', validateUsersRoute);
 
 export { routes };

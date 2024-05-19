@@ -8,11 +8,7 @@ export class UserService implements UserServiceInterface {
     if (!codeData) {
       throw new Error('Code data is required!');
     }
-    const validateDataUser = this.userRepository.validateUser('');
-    if (!validateDataUser) {
-      return validateDataUser;
-    } else {
-      return validateDataUser;
-    }
+    const validateDataUser = this.userRepository.validateUser(codeData);
+    return validateDataUser;
   }
 }

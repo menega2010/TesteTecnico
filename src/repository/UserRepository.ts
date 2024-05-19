@@ -10,7 +10,7 @@ export class UserRepository implements UserRepositoryInterface {
         }
       });
 
-      if (!userValidate) {
+      if (userValidate === null) {
         return false;
       }
 

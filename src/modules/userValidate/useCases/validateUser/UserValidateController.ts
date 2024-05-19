@@ -7,8 +7,8 @@ export class UserValidateController {
   async post(req: Request, resp: Response) {
     const { code } = req.body;
     const registerUseCase = container.resolve(ValidateUserUseCase);
-
-    const statusValidate = await registerUseCase.validateUser(code);
+    const dataCode: number = code
+    const statusValidate = await registerUseCase.validateUser(dataCode.toString());
 
     !statusValidate
       ? resp.status(400).json({ message: 'Código inválido!' })

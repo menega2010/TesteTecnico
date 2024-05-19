@@ -1,9 +1,11 @@
-// import { Router } from 'express';
-// import { validateTimeFactory } from '../../../../modules/time/infra/controller/TimeFactoryController';
+import { celebrate } from 'celebrate';
+import { Router } from 'express';
+import { TimeValidateController } from '../../../../modules/time/useCases/validateUser/TimeValidateController';
+import { deleteTimeValidator } from '../../../../modules/time/useCases/validateUser/validator';
 
-// const validateDeleteTimeRoute = Router();
-// const validateTimeController = validateTimeFactory();
+const validateDeleteTimeRoute = Router();
+const validateTimeController = new TimeValidateController();
 
-// validateDeleteTimeRoute.delete('/', validateTimeController.delete);
+validateDeleteTimeRoute.delete('/', celebrate(deleteTimeValidator) ,validateTimeController.delete);
 
-// export { validateDeleteTimeRoute };
+export { validateDeleteTimeRoute };

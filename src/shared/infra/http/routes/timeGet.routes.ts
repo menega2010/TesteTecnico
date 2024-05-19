@@ -1,9 +1,9 @@
-// import { Router } from 'express';
-// import { validateTimeFactory } from '../../../../modules/time/infra/controller/TimeFactoryController';
+import { Router } from 'express';
+import { TimeValidateController } from '../../../../modules/time/useCases/validateUser/TimeValidateController';
 
-// const validateGetTimeRoute = Router();
-// const validateTimeController = validateTimeFactory();
+const validateGetTimeRoute = Router();
+const validateTimeController = new TimeValidateController();
 
-// validateGetTimeRoute.get('/', validateTimeController.get);
+validateGetTimeRoute.get('/', validateTimeController.get);
 
-// export { validateGetTimeRoute };
+export { validateGetTimeRoute };

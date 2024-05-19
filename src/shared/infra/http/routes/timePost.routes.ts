@@ -1,9 +1,11 @@
-// import { Router } from 'express';
-// import { validateTimeFactory } from '../../../../modules/time/infra/controller/TimeFactoryController';
+import { celebrate } from 'celebrate';
+import { Router } from 'express';
+import { TimeValidateController } from '../../../../modules/time/useCases/validateUser/TimeValidateController';
+import { storeTimeValidator } from '../../../../modules/time/useCases/validateUser/validator';
 
-// const validatePostTimeRoute = Router();
-// const validateTimeController = validateTimeFactory();
+const validatePostTimeRoute = Router();
+const validateTimeController = new TimeValidateController();
 
-// validatePostTimeRoute.post('/', validateTimeController.post);
+validatePostTimeRoute.post('/', celebrate(storeTimeValidator) ,validateTimeController.post);
 
-// export { validatePostTimeRoute };
+export { validatePostTimeRoute };

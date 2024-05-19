@@ -12,7 +12,7 @@ COPY package.json ./
 
 # Instale as dependências, ignorando os problemas de dependências desatualizadas
 RUN npm install --legacy-peer-deps
-
+RUN npx prisma generate
 # Copie todo o restante do código-fonte para o diretório de trabalho
 COPY . .
 

@@ -23,9 +23,9 @@
     "start": "node ./dist/shared/infra/http/server.js",
     "lint": "eslint src/**/*.ts --max-warnings=0",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
-    "prisma:studio": "prisma studio --schema=./src/shared/infra/prisma/schema.prisma",
-    "prisma:migrate": "prisma migrate dev --schema=./src/shared/infra/prisma/schema.prisma",
-    "prisma:generate": "prisma generate --schema=./src/shared/infra/prisma/schema.prisma",
+    "prisma:studio": "npx prisma studio --schema=./src/shared/infra/prisma/schema.prisma",
+    "prisma:migrate": "npx prisma migrate dev --schema=./src/shared/infra/prisma/schema.prisma",
+    "prisma:generate": "npx prisma generate --schema=./src/shared/infra/prisma/schema.prisma",
     "prepare": "husky install",
     "test": "jest"
   },

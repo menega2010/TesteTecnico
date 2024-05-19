@@ -1,5 +1,5 @@
-import prismaClient from '../../prisma/prismaClient';
-import { UserRepositoryInterface } from '../interfaces/UserInterface/UserRepositoryInterface';
+import prismaClient from '../../../../../prisma/prismaClient';
+import { UserRepositoryInterface } from '../../../../interfaces/UserInterface/UserRepositoryInterface';
 
 export class UserRepository implements UserRepositoryInterface {
   async validateUser(codeData: string): Promise<boolean> {

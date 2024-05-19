@@ -1,5 +1,5 @@
-import { UserRepositoryInterface } from '../interfaces/UserInterface/UserRepositoryInterface';
-import { UserServiceInterface } from '../interfaces/UserInterface/UserServiceInterface';
+import { UserRepositoryInterface } from '../../../../interfaces/UserInterface/UserRepositoryInterface';
+import { UserServiceInterface } from '../../../../interfaces/UserInterface/UserServiceInterface';
 
 export class UserService implements UserServiceInterface {
   constructor(private readonly userRepository: UserRepositoryInterface) {}

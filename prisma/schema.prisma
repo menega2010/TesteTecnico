@@ -8,13 +8,25 @@ datasource db {
 }
 
 model tab_user {
-  id          String      @id @default(uuid())
-  name        String
-  lastName    String
-  code        String
-  phone       String      @unique
-  empresa     String      @unique
+  id       String @id @default(uuid())
+  name     String
+  lastName String @map("last_name")
+  code     String
+  phone    String @unique
+  empresa  String @unique
 
-  createdAt   String      @map("created_at") @db.VarChar(32)
-  updatedAt   String?     @map("updated_at") @db.VarChar(32)
+  createdAt String     @map("created_at") @db.VarChar(32)
+  updatedAt String?    @map("updated_at") @db.VarChar(32)
+  tab_times tab_time[]
+}
+
+model tab_time {
+  id        String @id @default(uuid())
+  userId    String @map("user_id")
+  enterTime String @map("enter_time") @db.VarChar(32)
+  exitTime  String @map("exit_time") @db.VarChar(32)
+
+  updatedAt String? @map("updated_at") @db.VarChar(32)
+
+  user tab_user @relation(fields: [userId], references: [id])
 }

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { UserRepository } from '../../repository/UserRepository';
-import { UserService } from '../../service/UserService';
-import { ValidateUserCase } from '../../useCases/validateUserCase';
+import { ValidateUserCase } from '../../../useCases/validateUser/ValidateUserCase';
+import { UserRepository } from '../repository/UserRepository';
+import { UserService } from '../service/UserService';
 
 const factory = () => {
   const userRepository = new UserRepository();
@@ -15,6 +15,7 @@ export class UserController {
 
   async post(req: Request, resp: Response) {
     const { code } = req.body;
+    console.log(code);
     const statusValidate = await factory().validateUser(code);
 
     statusValidate === 200

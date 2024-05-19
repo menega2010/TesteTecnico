@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { validateUserFactory } from '../controller/UserController/UserFactoryController';
+import { validateUserFactory } from '../../../../modules/user/infra/controller/UserFactoryController';
 
 const validateUsersRoute = Router();
 const validateUserController = validateUserFactory();

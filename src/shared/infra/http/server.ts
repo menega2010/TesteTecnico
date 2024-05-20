@@ -1,15 +1,17 @@
 import { CelebrateError } from 'celebrate';
 import express, { NextFunction, Request, Response } from 'express';
 import 'reflect-metadata';
-
-import { routes } from './routes';
+// eslint-disable-next-line import-helpers/order-imports
+import cors from 'cors';
 
 import '../../container';
+import { routes } from './routes';
 
 const app = express();
 const port = 5000;
 
 app.use(express.json());
+app.use(cors());
 app.use(routes);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

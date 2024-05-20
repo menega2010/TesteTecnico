@@ -1,15 +1,15 @@
 import { v4 as uuid } from 'uuid';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface UserInterface {
   id?: string;
-  name: string;
-  lastName: string;
-  code: string;
-  phone: string;
-  empresa: string;
-  createdAt: Date;
+  name?: string;
+  lastName?: string;
+  code?: string;
+  phone?: string;
+  empresa?: string;
+  createdAt?: string;
 }
-
 
 class User {
   public id!: string;
@@ -21,13 +21,11 @@ class User {
   public created_at!: string;
   public updated_at!: string;
 
-  constructor(){
-    if(!this.id) {
+  constructor() {
+    if (!this.id) {
       this.id = uuid();
     }
   }
-
 }
-
 
 export { User };

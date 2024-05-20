@@ -1,6 +1,6 @@
-import { TimeInterface } from "../entities/Time";
-import { TimeRepositoryInterface } from "../repositories/TimeRepositoryInterface";
-import { TimeServiceInterface } from "./TimeServiceInterface";
+import { TimeInterface } from '../entities/Time';
+import { TimeRepositoryInterface } from '../repositories/TimeRepositoryInterface';
+import { TimeServiceInterface } from './TimeServiceInterface';
 
 export class TimeService implements TimeServiceInterface {
   constructor(private readonly timeRepository: TimeRepositoryInterface) {}
@@ -11,6 +11,7 @@ export class TimeService implements TimeServiceInterface {
       enterTime,
       exitTime
     };
+    // eslint-disable-next-line no-return-await
     return await this.timeRepository
       .deleteTime(dataTime)
       .then(() => {
@@ -20,13 +21,13 @@ export class TimeService implements TimeServiceInterface {
         throw new Error(`Erro delete time: ${erro}`);
       });
   }
-  async addTime({ id, userId, enterTime, exitTime }: TimeInterface): Promise<boolean> {
+  async addTime({ userId, enterTime, exitTime }: TimeInterface): Promise<boolean> {
     const dataTime: TimeInterface = {
-      id,
       userId,
       enterTime,
       exitTime
     };
+    // eslint-disable-next-line no-return-await
     return await this.timeRepository
       .addTime(dataTime)
       .then(() => {
@@ -37,6 +38,7 @@ export class TimeService implements TimeServiceInterface {
       });
   }
   async getAll(): Promise<TimeInterface[]> {
+    // eslint-disable-next-line no-return-await
     return await this.timeRepository.getAll();
   }
 }

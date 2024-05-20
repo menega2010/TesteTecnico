@@ -1,4 +1,6 @@
 import { Router } from 'express';
+
+import { validateGetUserRoute } from './getUser.routes';
 import { validateDeleteTimeRoute } from './timeDelete.routes';
 import { validateGetTimeRoute } from './timeGet.routes';
 import { validatePostTimeRoute } from './timePost.routes';
@@ -8,6 +10,7 @@ const routes = Router();
 
 routes.use('/validate', validateUsersRoute);
 routes.use('/getTime', validateGetTimeRoute);
+routes.use('/getUser', validateGetUserRoute);
 routes.use('/addTime', validatePostTimeRoute);
 routes.use('/deleteTime', validateDeleteTimeRoute);
 

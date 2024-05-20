@@ -1,5 +1,6 @@
-import prismaClient from "../../../../shared/infra/prisma/prismaClient";
-import { UserRepositoryInterface } from "./UserRepositoryInterface";
+import prismaClient from '../../../../shared/infra/prisma/prismaClient';
+import { UserInterface } from '../entities/User';
+import { UserRepositoryInterface } from './UserRepositoryInterface';
 
 export class UserRepository implements UserRepositoryInterface {
   async validateUser(codeData: string): Promise<boolean> {
@@ -16,7 +17,20 @@ export class UserRepository implements UserRepositoryInterface {
 
       return true;
     } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       throw new Error(`Error validate user: ${error}`);
     }
+  }
+
+  async getAll(): Promise<UserInterface[]> {
+    return prismaClient.tab_user
+      .findMany()
+      .then((consultingTime: UserInterface[]) => {
+        return consultingTime;
+      })
+      .catch((error) => {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        throw new Error(`Error fetching consulting time: ${error}`);
+      });
   }
 }
